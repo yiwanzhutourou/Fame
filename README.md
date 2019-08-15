@@ -1,5 +1,22 @@
 # Fame博客系统文档
 
+## 项目结构
+
+### 文件结构
+
+```
+└─Fame
+    ├─fame-admin          // 博客管理后台，基于Vue+elementui
+    ├─fame-docker         // docker部署文件
+    ├─fame-front          // 博客前端，基于Nuxt
+    ├─fame-server         // 博客服务端，基于spring-boot
+    ├─docker-compose.yml  // docker-compose文件
+```
+
+### 部署结构(docker)
+
+![fame-structure](https://raw.githubusercontent.com/zzzzbw/blog_source/master/images/FameDocker/fame-structure.jpg)
+
 ## 部署方式
 
 > 博客管理后台初始的账号：fame，密码：123456，登录管理后台后可修改。
@@ -40,7 +57,7 @@
     
     > xx.xxx.xx.xx为你的域名或者ip地址，本地的话即为127.0.0.1
 
-### 开发环境手动部署
+### 开发环境快速启动
 
 首先保证有 `java8` `mysql5.7.x` `maven3.3.x` `node10.x` `npm6.x`的环境(版本不一定要完全一样，但避免奇怪的问题出现，最好相同)
 
