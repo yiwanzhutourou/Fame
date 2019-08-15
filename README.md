@@ -177,6 +177,46 @@ fame-docker是关于docker部署的各个系统的`Dockerfile`和一些配置文
 
 ## 备注
 
+### 常用脚本
+
+#### 进入各个容器(服务启动时)
+
+fame-server:
+
+```
+docker exec -it fame-server bash
+```
+
+fame-mysql:
+
+```
+docker exec -it fame-mysql bash
+```
+
+fame-front:
+
+```
+docker exec -it fame-front sh
+```
+
+fame-admin:
+
+```
+docker exec -it fame-admin sh
+```
+
+fame-nginx:
+
+```
+docker exec -it fame-nginx sh
+```
+
+#### 备份mysql容器的sql数据
+
+```
+docker exec fame-mysql /usr/bin/mysqldump -u root --password=root fame > `date '+%Y-%m-%dT%H%M%S'`backup.sql
+```
+
 ### 常见问题
 
 * mysql的数据存在哪里？如果docker镜像被删除我的数据会丢失吗？
