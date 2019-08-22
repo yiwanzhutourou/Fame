@@ -141,78 +141,77 @@
 
 3. 启动前端博客页面服务(fame-front)
 
-  3.1 进入文件夹
+    3.1 进入文件夹
 
-  `cd fame-front`
+    `cd fame-front`
 
-  3.2 安装依赖
+    3.2 安装依赖
 
-  `npm install`
+    `npm install`
 
-  3.3 启动服务
+    3.3 启动服务
 
-  `nohup npm run start`
+    `nohup npm run start`
 
-  当执行`netstat -ntulp | grep 3000`有列出线程时，说明启动完成。
+    当执行`netstat -ntulp | grep 3000`有列出线程时，说明启动完成。
 
 
 4. 配置nginx及前端后台管理服务(fame-admin)
 
-   > 由于fame-admin项目是静态页面，必须要依靠服务器来使用，所以这里和nginx配置一起启动
+    > 由于fame-admin项目是静态页面，必须要依靠服务器来使用，所以这里和nginx配置一起启动
 
-   4.1 设置nginx配置
+    4.1 设置nginx配置
 
-   ```
-   # 反向代理server配置
-   server {
-       listen       80;
-       charset utf-8;
+    ```
+    # 反向代理server配置
+    server {
+      listen       80;
+      charset utf-8;
    
-       location /api/ {
-           proxy_set_header   X-Real-IP $remote_addr; #转发用户IP
-           proxy_pass http://127.0.0.1:9090; #fame-server
-       }
+      location /api/ {
+        proxy_set_header   X-Real-IP $remote_addr; #转发用户IP
+        proxy_pass http://127.0.0.1:9090; #fame-server
+      }
        
-       location /media/ {
-           proxy_pass http://127.0.0.1:9090; #fame-server 资源文件
-       }
+      location /media/ {
+        proxy_pass http://127.0.0.1:9090; #fame-server 资源文件
+      }
        
-       location /admin {
-          proxy_pass   http://127.0.0.1:3001/; #fame-admin
-       }
+      location /admin {
+        proxy_pass   http://127.0.0.1:3001/; #fame-admin
+      }
        
-       location / {
-           proxy_pass   http://127.0.0.1:3000/; #fame-front nuxt项目 监听端口
-       }
+      location / {
+        proxy_pass   http://127.0.0.1:3000/; #fame-front nuxt项目 监听端口
+      }
        
-       error_page   500 502 503 504  /50x.html;
-       location = /50x.html {
-           root   /usr/share/nginx/html;
-       }
-   }
+      error_page   500 502 503 504  /50x.html;
+      location = /50x.html {
+        root   /usr/share/nginx/html;
+      }
+    }
    
-   # fame-admin server配置
-   server {
-       listen 3001;
-       charset utf-8;
+    # fame-admin server配置
+    server {
+      listen 3001;
+      charset utf-8;
    
-   
-       location / {
-          root  /usr/share/nginx/fame-admin/;
-          try_files $uri $uri/ /index.html;
-       }
-   }
-   ```
+      location / {
+        root  /usr/share/nginx/fame-admin/;
+        try_files $uri $uri/ /index.html;
+      }
+    }
+    ```
 
-   4.2 拷贝fame-admin文件到nginx目录
+    4.2 拷贝fame-admin文件到nginx目录
 
-   `cp -r fame-admin/ /usr/share/nginx/fame-admin/`
+    `cp -r fame-admin/ /usr/share/nginx/fame-admin/`
 
-   > 这里拷贝的目标文件夹要和nginx配置文件中的fame-admin server配置里的root目录一致
+    > 这里拷贝的目标文件夹要和nginx配置文件中的fame-admin server配置里的root目录一致
 
-   然后启动nginx即部署完成
+    然后启动nginx即部署完成
 
-   `systemctl start nginx.service`
+    `systemctl start nginx.service`
 
 ### 开发环境启动
 
