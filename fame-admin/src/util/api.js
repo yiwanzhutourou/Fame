@@ -45,7 +45,7 @@ const auth = {
     return post("/admin/post", article);
   },
   deletePost(id) {
-    return del("/admin/article/" + id);
+    return del("/admin/post/" + id);
   },
   pageComment(page) {
     const params = {

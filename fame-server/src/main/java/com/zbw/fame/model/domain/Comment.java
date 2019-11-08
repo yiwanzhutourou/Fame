@@ -82,8 +82,8 @@ public class Comment extends BaseEntity {
     /**
      * 状态
      */
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", columnDefinition = "VARCHAR(32)")
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "status", columnDefinition = "INT NOT NULL DEFAULT 0")
     private CommentStatus status;
 
     @PrePersist

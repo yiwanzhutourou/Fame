@@ -176,6 +176,7 @@ public class CommentServiceImpl implements CommentService {
     public int deleteCommentByArticleId(Integer articleId) {
         Comment record = new Comment();
         record.setArticleId(articleId);
+        record.setStatus(CommentStatus.NORMAL);
         List<Comment> list = commentRepository.findAll(Example.of(record));
         list.forEach(comment -> comment.setStatus(CommentStatus.DELETE));
 

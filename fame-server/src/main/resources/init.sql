@@ -77,8 +77,8 @@ CREATE TABLE middle
     id   INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     created TIMESTAMP NOT NULL DEFAULT current_timestamp,
     modified TIMESTAMP NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp,
-    a_id INT             NOT NULL,
-    m_id INT             NOT NULL
+    article_id INT             NOT NULL,
+    meta_id INT             NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
@@ -136,9 +136,9 @@ VALUES ('First', 'tag');
 INSERT INTO meta (name, type)
 VALUES ('New', 'category');
 
-INSERT INTO middle (a_id, m_id)
+INSERT INTO middle (article_id, meta_id)
 VALUES (1, 1);
-INSERT INTO middle (a_id, m_id)
+INSERT INTO middle (article_id, meta_id)
 VALUES (1, 2);
 
 INSERT INTO article (title, created, modified, content, author_id, tags, category, status, type)
