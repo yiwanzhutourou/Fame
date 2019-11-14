@@ -272,12 +272,15 @@ table tr td:last-child {
 }
 
 .markdown-body code, tt {
-  margin: 0 2px;
   padding: 2px 4px;
   border-radius: 2px;
-  font-family: Consolas, Roboto, monospace !important;
-  font-size: 0.92rem;
-  background-color: #f7f7f7;
+  background-color: #f2f2f2;
+}
+
+/* 覆盖 code 样式 */
+.hljs {
+  background: #282b2e !important;
+  padding: 4px 10px !important;
 }
 
 /* heighlight. */

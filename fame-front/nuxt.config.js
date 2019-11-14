@@ -41,12 +41,7 @@ export default {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href: 'https://fonts.font.im/css?family=Roboto|Source+Code+Pro'
-      }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     noscript: [{ innerHTML: 'This website requires JavaScript.' }]
   },
@@ -57,7 +52,7 @@ export default {
     { src: '~assets/css/main.css' },
     { src: '~assets/css/normalize.css' },
     { src: '~assets/css/style.css' },
-    'highlight.js/styles/tomorrow.css',
+    'highlight.js/styles/androidstudio.css',
     { src: '~assets/css/icon.css' }
   ],
   modules: ['@nuxtjs/sitemap', '@nuxtjs/feed'],
