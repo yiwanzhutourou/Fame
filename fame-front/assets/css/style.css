@@ -274,6 +274,7 @@ table tr td:last-child {
 .markdown-body code, tt {
   padding: 2px 4px;
   border-radius: 2px;
+  font-size: 0.92rem;
   background-color: #f2f2f2;
 }
 
